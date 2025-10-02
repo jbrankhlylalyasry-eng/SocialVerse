@@ -1,0 +1,814 @@
+:root {
+            --primary-bg: #0a0a0a;
+            --secondary-bg: #151515;
+            --card-bg: #1e1e1e;
+            --accent-1: #6366f1;
+            --accent-2: #ec4899;
+            --accent-3: #10b981;
+            --accent-4: #f59e0b;
+            --gradient-primary: linear-gradient(135deg, #6366f1, #ec4899, #10b981);
+            --gradient-secondary: linear-gradient(135deg, #8b5cf6, #3b82f6);
+            --gradient-story: linear-gradient(135deg, #ec4899, #db2777);
+            
+            --text-primary: #ffffff;
+            --text-secondary: #a1a1aa;
+            --text-muted: #71717a;
+            
+            --border-color: #27272a;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.4);
+            --shadow-lg: 0 10px 30px rgba(0,0,0,0.5);
+            --shadow-story: 0 0 30px rgba(236, 72, 153, 0.3);
+            
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-full: 50%;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+        }
+
+        body {
+            background: var(--primary-bg);
+            color: var(--text-primary);
+            overflow-x: hidden;
+        }
+
+        .app-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* شريط العنوان */
+        .stories-header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 60px;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            z-index: 1000;
+            gap: 15px;
+        }
+
+        .back-btn {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: var(--radius-full);
+            color: var(--text-primary);
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .stories-title {
+            font-size: 18px;
+            font-weight: 700;
+            flex: 1;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .icon-btn {
+            width: 40px;
+            height: 40px;
+            border: none;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-full);
+            color: var(--text-primary);
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .icon-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-1px);
+        }
+
+        /* المحتوى الرئيسي */
+        .stories-content {
+            margin-top: 60px;
+            padding: 20px;
+            flex: 1;
+            padding-bottom: 100px;
+        }
+
+        /* قسم قصصي */
+        .my-stories-section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title i {
+            color: var(--accent-2);
+        }
+
+        .my-stories-container {
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            padding: 10px 0;
+            scrollbar-width: none;
+        }
+
+        .my-stories-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* بطاقة إضافة قصة */
+        .add-story-card {
+            flex-shrink: 0;
+            width: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .add-story-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: var(--radius-full);
+            background: var(--card-bg);
+            border: 2px dashed var(--border-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+
+        .add-story-card:hover .add-story-avatar {
+            border-color: var(--accent-1);
+            color: var(--accent-1);
+        }
+
+        .add-story-icon {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .add-story-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        /* قصص الآخرين */
+        .all-stories-section {
+            margin-bottom: 30px;
+        }
+
+        .stories-grid {
+            display: grid;
+            gap: 20px;
+        }
+
+        .user-stories-card {
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            padding: 15px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .user-stories-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-story);
+        }
+
+        .user-stories-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .user-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: var(--radius-full);
+            position: relative;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        .user-avatar.has-stories::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: var(--gradient-story);
+            border-radius: var(--radius-full);
+            z-index: -1;
+        }
+
+        .user-info {
+            flex: 1;
+        }
+
+        .user-name {
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+
+        .story-time {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .story-count {
+            background: var(--accent-1);
+            color: white;
+            border-radius: var(--radius-full);
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .stories-preview {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding: 5px 0;
+            scrollbar-width: none;
+        }
+
+        .stories-preview::-webkit-scrollbar {
+            display: none;
+        }
+
+        .story-preview-item {
+            flex-shrink: 0;
+            width: 80px;
+            height: 120px;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            position: relative;
+            background: var(--gradient-secondary);
+        }
+
+        .story-preview-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .story-preview-duration {
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 2px 6px;
+            border-radius: var(--radius-sm);
+            font-size: 10px;
+            font-weight: 600;
+        }
+
+        /* مشغل القصص */
+        .story-viewer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #000;
+            z-index: 2000;
+            display: none;
+            flex-direction: column;
+        }
+
+        .story-viewer.active {
+            display: flex;
+        }
+
+        .story-progress-container {
+            display: flex;
+            gap: 4px;
+            padding: 15px 20px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 10;
+        }
+
+        .story-progress-bar {
+            flex: 1;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: var(--radius-full);
+            overflow: hidden;
+        }
+
+        .story-progress-fill {
+            height: 100%;
+            background: white;
+            border-radius: var(--radius-full);
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+
+        .story-header {
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: absolute;
+            top: 30px;
+            left: 0;
+            right: 0;
+            z-index: 10;
+        }
+
+        .story-user-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .story-user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-full);
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .story-user-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .story-user-name {
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .story-post-time {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .story-close-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: var(--radius-full);
+            color: white;
+            width: 40px;
+            height: 40px;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .story-close-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .story-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .story-media {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: #000;
+        }
+
+        .story-navigation {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 50%;
+            cursor: pointer;
+            z-index: 5;
+        }
+
+        .story-prev {
+            right: 0;
+        }
+
+        .story-next {
+            left: 0;
+        }
+
+        .story-actions {
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 10;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.5));
+        }
+
+        .story-input-container {
+            flex: 1;
+            margin: 0 15px;
+            position: relative;
+        }
+
+        .story-input {
+            width: 100%;
+            padding: 12px 45px 12px 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: var(--radius-full);
+            color: white;
+            font-size: 14px;
+            backdrop-filter: blur(10px);
+        }
+
+        .story-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .story-input:focus {
+            outline: none;
+            border-color: var(--accent-1);
+        }
+
+        .story-send-btn {
+            position: absolute;
+            left: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--accent-1);
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .story-action-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .story-action-btn {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: var(--radius-full);
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .story-action-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+
+        .story-action-btn.liked {
+            color: #ef4444;
+        }
+
+        /* نافذة إنشاء قصة */
+        .create-story-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .create-story-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .create-story-content {
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            width: 100%;
+            max-width: 500px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .create-story-modal.active .create-story-content {
+            transform: scale(1);
+        }
+
+        .create-story-header {
+            padding: 20px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .create-story-title {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .close-create-story {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 18px;
+            cursor: pointer;
+            width: 32px;
+            height: 32px;
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .close-create-story:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .create-story-body {
+            padding: 20px;
+        }
+
+        .story-creation-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .creation-option {
+            padding: 20px;
+            background: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .creation-option:hover {
+            border-color: var(--accent-1);
+            transform: translateY(-3px);
+        }
+
+        .creation-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+            color: var(--accent-1);
+        }
+
+        .creation-label {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .recent-stories {
+            margin-top: 30px;
+        }
+
+        .recent-stories-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        .recent-stories-list {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding: 10px 0;
+            scrollbar-width: none;
+        }
+
+        .recent-stories-list::-webkit-scrollbar {
+            display: none;
+        }
+
+        .recent-story-item {
+            flex-shrink: 0;
+            width: 80px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .recent-story-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: var(--radius-full);
+            margin: 0 auto 8px;
+            background: var(--gradient-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+
+        .recent-story-name {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        /* مؤشرات التفاعل */
+        .story-reactions {
+            position: absolute;
+            bottom: 100px;
+            left: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .reaction-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 8px 12px;
+            border-radius: var(--radius-full);
+            color: white;
+            font-size: 14px;
+        }
+
+        .reaction-emoji {
+            font-size: 16px;
+        }
+
+        .reaction-count {
+            font-weight: 600;
+        }
+
+        /* شريط التنقل السفلي */
+        .bottom-nav-new {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 70px;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 0 10px;
+            z-index: 1000;
+        }
+
+        .nav-item-new {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 10px;
+            padding: 8px 12px;
+            border-radius: var(--radius-md);
+            transition: all 0.3s ease;
+        }
+
+        .nav-item-new.active {
+            color: var(--accent-1);
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        .nav-icon-new {
+            font-size: 20px;
+        }
+
+        /* تحسينات التجاوب */
+        @media (max-width: 768px) {
+            .stories-content {
+                padding: 15px;
+                padding-bottom: 90px;
+            }
+            
+            .story-creation-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .story-actions {
+                padding: 15px;
+            }
+            
+            .story-action-buttons {
+                gap: 5px;
+            }
+            
+            .story-action-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .stories-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* تأثيرات للقصص */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+
+        /* مؤشر القصص الجديدة */
+        .new-stories-indicator {
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            width: 12px;
+            height: 12px;
+            background: var(--accent-2);
+            border: 2px solid var(--card-bg);
+            border-radius: var(--radius-full);
+        }
