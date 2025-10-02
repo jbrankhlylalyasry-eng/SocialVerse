@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SocialVerse - إدارة التعليقات</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="assets/css/comments_dashboard.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- شريط العنوان -->
+        <header class="main-header">
+            <button class="back-btn" id="backBtn">
+                <i class="fas fa-arrow-right"></i>
+            </button>
+            <div class="page-title">إدارة التعليقات</div>
+            <div class="header-actions">
+                <button class="icon-btn" id="filterBtn">
+                    <i class="fas fa-filter"></i>
+                </button>
+                <button class="icon-btn" id="refreshBtn">
+                    <i class="fas fa-sync-alt"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- المحتوى الرئيسي -->
+        <main class="main-content">
+            <!-- إحصائيات التعليقات -->
+            <div class="comments-stats">
+                <div class="stat-card">
+                    <div class="stat-number">156</div>
+                    <div class="stat-label">إجمالي التعليقات</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">12</div>
+                    <div class="stat-label">مبلغ عنها</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">8</div>
+                    <div class="stat-label">قيد المراجعة</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">136</div>
+                    <div class="stat-label">مقبولة</div>
+                </div>
+            </div>
+
+            <!-- فلتر وفرز التعليقات -->
+            <div class="comments-controls">
+                <div class="filter-group">
+                    <span class="filter-label">التصنيف:</span>
+                    <select class="filter-select" id="statusFilter">
+                        <option value="all">جميع التعليقات</option>
+                        <option value="reported">مبلغ عنها</option>
+                        <option value="pending">قيد المراجعة</option>
+                        <option value="approved">مقبولة</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <span class="filter-label">الترتيب:</span>
+                    <select class="filter-select" id="sortFilter">
+                        <option value="newest">الأحدث أولاً</option>
+                        <option value="oldest">الأقدم أولاً</option>
+                        <option value="most-liked">الأكثر إعجاباً</option>
+                    </select>
+                </div>
+
+                <div class="search-box">
+                    <input type="text" class="search-input" id="searchComments" placeholder="ابحث في التعليقات...">
+                    <i class="fas fa-search search-icon"></i>
+                </div>
+            </div>
+
+            <!-- قائمة التعليقات -->
+            <div class="comments-list" id="commentsList">
+                <!-- التعليق 1 -->
+                <div class="comment-card reported">
+                    <div class="comment-header">
+                        <div class="comment-user">
+                            <div class="user-avatar">م</div>
+                            <div class="user-info">
+                                <div class="user-name">محمد أحمد</div>
+                                <div class="comment-time">قبل 3 ساعات • في <strong>عالم البرمجة</strong></div>
+                            </div>
+                        </div>
+                        <div class="comment-actions">
+                            <span class="comment-status status-reported">مبلغ عنه</span>
+                            <button class="action-btn btn-approve" title="قبول التعليق">
+                                <i class="fas fa-check"></i>
+                            </button>
+                            <button class="action-btn btn-delete" title="حذف التعليق">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="comment-content">
+                        <div class="comment-text">
+                            هذا التعليق يحتوي على محتوى غير لائق ويجب مراجعته من قبل الإدارة. بعض الكلمات غير مناسبة للمنصة ويجب إزالتها فوراً.
+                        </div>
+                        <div class="comment-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-heart"></i>
+                                <span>5</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-reply"></i>
+                                <span>2</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-flag"></i>
+                                <span>3 بلاغات</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- التعليق 2 -->
+                <div class="comment-card pending">
+                    <div class="comment-header">
+                        <div class="comment-user">
+                            <div class="user-avatar">ف</div>
+                            <div class="user-info">
+                                <div class="user-name">فاطمة السعدي</div>
+                                <div class="comment-time">قبل 5 ساعات • في <strong>عالم التصميم</strong></div>
+                            </div>
+                        </div>
+                        <div class="comment-actions">
+                            <span class="comment-status status-pending">قيد المراجعة</span>
+                            <button class="action-btn btn-approve" title="قبول التعليق">
+                                <i class="fas fa-check"></i>
+                            </button>
+                            <button class="action-btn btn-delete" title="حذف التعليق">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="comment-content">
+                        <div class="comment-text">
+                            شكراً على هذا المحتوى الرائع! لقد استفدت كثيراً من النصائح المقدمة خاصة في مجال تصميم واجهات المستخدم.
+                        </div>
+                        <div class="comment-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-heart"></i>
+                                <span>12</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-reply"></i>
+                                <span>3</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comment-replies">
+                        <div class="replies-title">
+                            <i class="fas fa-reply"></i>
+                            الردود (3)
+                        </div>
+                        <div class="reply-list">
+                            <div class="reply-card">
+                                <div class="reply-header">
+                                    <div class="reply-user">
+                                        <div class="reply-avatar">أ</div>
+                                        <div class="reply-name">أحمد محمد</div>
+                                    </div>
+                                    <div class="reply-time">قبل ساعتين</div>
+                                </div>
+                                <div class="reply-text">
+                                    أنا سعيد لأنك استفدتي من المحتوى! هل هناك أي موضوع معين تودين مناقشته؟
+                                </div>
+                            </div>
+                            <div class="reply-card">
+                                <div class="reply-header">
+                                    <div class="reply-user">
+                                        <div class="reply-avatar">ف</div>
+                                        <div class="reply-name">فاطمة السعدي</div>
+                                    </div>
+                                    <div class="reply-time">قبل ساعة</div>
+                                </div>
+                                <div class="reply-text">
+                                    نعم، أود معرفة المزيد عن أفضل practices في تصميم تجربة المستخدم للتطبيقات الجوالة.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="add-reply">
+                            <input type="text" class="reply-input" placeholder="اكتب رداً...">
+                            <button class="send-reply">إرسال</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- التعليق 3 -->
+                <div class="comment-card approved">
+                    <div class="comment-header">
+                        <div class="comment-user">
+                            <div class="user-avatar">ن</div>
+                            <div class="user-info">
+                                <div class="user-name">نورة القحطاني</div>
+                                <div class="comment-time">قبل يوم • في <strong>عالم ريادة الأعمال</strong></div>
+                            </div>
+                        </div>
+                        <div class="comment-actions">
+                            <span class="comment-status status-approved">مقبول</span>
+                            <button class="action-btn btn-edit" title="تعديل التعليق">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="action-btn btn-delete" title="حذف التعليق">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="comment-content">
+                        <div class="comment-text">
+                            تجربة رائعة! أنا أيضاً بدأت مشروعي الناشئ منذ 6 أشهر وأتفق تماماً مع النقاط المطروحة في المقال. 
+                            التخطيط الجيد والتسويق الفعال هما أساس النجاح في أي مشروع.
+                        </div>
+                        <div class="comment-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-heart"></i>
+                                <span>24</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-reply"></i>
+                                <span>7</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- تحميل المزيد -->
+            <div class="load-more">
+                <button class="load-more-btn" id="loadMoreBtn">
+                    <i class="fas fa-chevron-down"></i>
+                    تحميل المزيد من التعليقات
+                </button>
+            </div>
+
+            <!-- المساحة الفاضية -->
+            <div class="content-spacer">
+                <div class="spacer-content">
+                    <i class="fas fa-arrow-up"></i>
+                    <span>وصلت إلى نهاية التعليقات</span>
+                </div>
+            </div>
+        </main>
+
+        <!-- شريط التنقل السفلي -->
+        <nav class="bottom-nav-new">
+            <a href="#" class="nav-item-new">
+                <i class="fas fa-home nav-icon-new"></i>
+                <span>الرئيسية</span>
+            </a>
+            <a href="#" class="nav-item-new">
+                <i class="fas fa-compass nav-icon-new"></i>
+                <span>استكشاف</span>
+            </a>
+            <a href="#" class="nav-item-new">
+                <i class="fas fa-globe nav-icon-new"></i>
+                <span>العوالم</span>
+            </a>
+            <a href="#" class="nav-item-new">
+                <i class="fas fa-comments nav-icon-new"></i>
+                <span>التعليقات</span>
+            </a>
+            <a href="#" class="nav-item-new active">
+                <i class="fas fa-user nav-icon-new"></i>
+                <span>حسابي</span>
+            </a>
+        </nav>
+    </div>
+
+    
+    <script src="assets/js/comments_dashboard.js"></script>
+</body>
+</html>

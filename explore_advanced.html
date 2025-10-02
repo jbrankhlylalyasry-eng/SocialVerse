@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SocialVerse - الاستكشاف</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    
+    <link rel="stylesheet" href="assets/css/explore_advanced.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- شريط العنوان -->
+        <header class="explore-header">
+            <button class="back-btn" id="backBtn">
+                <i class="fas fa-arrow-right"></i>
+            </button>
+            <div class="explore-title">الاستكشاف</div>
+            <div class="header-actions">
+                <button class="icon-btn">
+                    <i class="fas fa-filter"></i>
+                </button>
+                <button class="icon-btn">
+                    <i class="fas fa-bell"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- شريط البحث المتقدم -->
+        <section class="search-hero">
+            <div class="search-hero-content">
+                <h1 class="hero-title">اكتشف عوالم جديدة</h1>
+                <p class="hero-subtitle">استكشف المحتوى المخصص لك بناءً على اهتماماتك وتفاعلاتك</p>
+                <div class="main-search-container">
+                    <input type="text" class="main-search-input" id="mainSearchInput" placeholder="ابحث عن العوالم، المحتوى، والأشخاص...">
+                    <i class="fas fa-search search-icon-hero"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- الفلاتر المتقدمة -->
+        <section class="advanced-filters">
+            <div class="filters-container">
+                <div class="filter-group">
+                    <label class="filter-label">التصنيف</label>
+                    <select class="filter-select" id="categoryFilter">
+                        <option value="">جميع التصنيفات</option>
+                        <option value="technology">التقنية</option>
+                        <option value="education">التعليم</option>
+                        <option value="entertainment">الترفيه</option>
+                        <option value="sports">الرياضة</option>
+                        <option value="arts">الفنون</option>
+                        <option value="business">الأعمال</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label class="filter-label">المستوى</label>
+                    <select class="filter-select" id="levelFilter">
+                        <option value="">جميع المستويات</option>
+                        <option value="beginner">مبتدئ</option>
+                        <option value="intermediate">متوسط</option>
+                        <option value="advanced">متقدم</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label class="filter-label">اللغة</label>
+                    <select class="filter-select" id="languageFilter">
+                        <option value="">جميع اللغات</option>
+                        <option value="arabic">العربية</option>
+                        <option value="english">الإنجليزية</option>
+                        <option value="french">الفرنسية</option>
+                        <option value="spanish">الإسبانية</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label class="filter-label">النشاط</label>
+                    <select class="filter-select" id="activityFilter">
+                        <option value="">جميع الأنشطة</option>
+                        <option value="live">مباشر الآن</option>
+                        <option value="active">نشط</option>
+                        <option value="popular">شائع</option>
+                        <option value="new">جديد</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="filter-tags" id="filterTags">
+                <div class="filter-tag active" data-filter="recommended">
+                    <i class="fas fa-star"></i>
+                    <span>موصى به</span>
+                </div>
+                <div class="filter-tag" data-filter="trending">
+                    <i class="fas fa-fire"></i>
+                    <span>شائع</span>
+                </div>
+                <div class="filter-tag" data-filter="nearby">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>قريب منك</span>
+                </div>
+                <div class="filter-tag" data-filter="friends">
+                    <i class="fas fa-user-friends"></i>
+                    <span>أصدقائك</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- المحتوى الرئيسي -->
+        <main class="main-content">
+            <!-- تبويبات المحتوى -->
+            <nav class="content-tabs">
+                <button class="content-tab active" data-tab="recommended">موصى به لك</button>
+                <button class="content-tab" data-tab="trending">الاتجاهات</button>
+                <button class="content-tab" data-tab="nearby">القريب منك</button>
+                <button class="content-tab" data-tab="categories">الفئات</button>
+                <button class="content-tab" data-tab="map">الخريطة</button>
+            </nav>
+
+            <!-- قسم موصى به لك -->
+            <section class="content-section active" id="recommended-content">
+                <div class="section-header">
+                    <div class="section-title">
+                        <span class="ai-indicator">
+                            <span class="ai-pulse"></span>
+                            AI
+                        </span>
+                        موصى به خصيصاً لك
+                    </div>
+                    <div class="section-actions">
+                        <button class="view-all-btn">عرض الكل</button>
+                    </div>
+                </div>
+                
+                <div class="recommendation-section">
+                    <div class="recommendation-grid" id="personalRecommendations">
+                        <!-- سيتم ملؤها بالبيانات من JavaScript -->
+                    </div>
+                </div>
+                
+                <div class="section-header">
+                    <div class="section-title">استناداً إلى اهتماماتك</div>
+                </div>
+                
+                <div class="content-grid" id="interestBasedContent">
+                    <!-- سيتم ملؤها بالبيانات من JavaScript -->
+                </div>
+            </section>
+
+            <!-- قسم الاتجاهات -->
+            <section class="content-section" id="trending-content">
+                <div class="section-header">
+                    <div class="section-title">الاتجاهات الشائعة الآن</div>
+                    <div class="section-actions">
+                        <button class="view-all-btn">عرض الكل</button>
+                    </div>
+                </div>
+                
+                <div class="content-grid" id="trendingContent">
+                    <!-- سيتم ملؤها بالبيانات من JavaScript -->
+                </div>
+            </section>
+
+            <!-- قسم القريب منك -->
+            <section class="content-section" id="nearby-content">
+                <div class="section-header">
+                    <div class="section-title">العوالم القريبة منك</div>
+                    <div class="section-actions">
+                        <button class="view-all-btn">عرض الكل</button>
+                    </div>
+                </div>
+                
+                <div class="map-section">
+                    <div id="exploreMap"></div>
+                </div>
+                
+                <div class="content-grid" id="nearbyContent">
+                    <!-- سيتم ملؤها بالبيانات من JavaScript -->
+                </div>
+            </section>
+
+            <!-- قسم الفئات -->
+            <section class="content-section" id="categories-content">
+                <div class="section-header">
+                    <div class="section-title">تصفح حسب الفئة</div>
+                </div>
+                
+                <div class="content-grid" id="categoriesContent">
+                    <!-- سيتم ملؤها بالبيانات من JavaScript -->
+                </div>
+            </section>
+
+            <!-- قسم الخريطة -->
+            <section class="content-section" id="map-content">
+                <div class="section-header">
+                    <div class="section-title">خريطة العوالم التفاعلية</div>
+                    <div class="section-actions">
+                        <button class="view-all-btn">عرض القائمة</button>
+                    </div>
+                </div>
+                
+                <div class="world-map">
+                    <div class="map-header">
+                        <div class="map-title">العوالم النشطة حول العالم</div>
+                        <div class="map-zoom-controls">
+                            <button class="zoom-btn" id="zoomOut">
+                                <i class="fas fa-search-minus"></i>
+                            </button>
+                            <button class="zoom-btn" id="zoomIn">
+                                <i class="fas fa-search-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="map-container" id="worldMap">
+                        <!-- سيتم إضافة نقاط الخريطة ديناميكياً -->
+                        <div class="map-tooltip" id="mapTooltip"></div>
+                    </div>
+                </div>
+                
+                <div class="content-grid" id="mapBasedContent">
+                    <!-- سيتم ملؤها بالبيانات من JavaScript -->
+                </div>
+            </section>
+
+            <!-- المساحة الفاضية البسيطة في نهاية المحتوى -->
+            <div class="content-spacer">
+                <div class="spacer-content">
+                    <i class="fas fa-arrow-up"></i>
+                    <span>وصلت إلى نهاية المحتوى الحالي</span>
+                </div>
+            </div>
+        </main>
+
+        <!-- شريط التنقل السفلي -->
+        <nav class="bottom-nav-new">
+            <a href="الصفحة الرئيسية.html" class="nav-item-new">
+                <i class="fas fa-home nav-icon-new"></i>
+                <span>الرئيسية</span>
+            </a>
+            <a href="#" class="nav-item-new active">
+                <i class="fas fa-compass nav-icon-new"></i>
+                <span>استكشاف</span>
+            </a>
+            <a href="محتويات العالم معدل.html" class="nav-item-new">
+                <i class="fas fa-globe nav-icon-new"></i>
+                <span>العوالم</span>
+            </a>
+            <a href="نظام التواصل والرسائل.html" class="nav-item-new">
+                <i class="fas fa-comments nav-icon-new"></i>
+                <span>المراسلات</span>
+            </a>
+            <a href="صفحة حسابي.html" class="nav-item-new">
+                <i class="fas fa-user nav-icon-new"></i>
+                <span>حسابي</span>
+            </a>
+        </nav>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    
+    <script src="assets/js/explore_advanced.js"></script>
+</body>
+</html>

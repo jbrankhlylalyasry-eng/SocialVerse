@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SocialVerse - إنشاء عالم جديد</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="assets/css/world_creator.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="main-header">
+            <div class="logo">SocialVerse</div>
+            <div class="header-actions">
+                <button class="icon-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="icon-btn">
+                    <i class="fas fa-plus"></i>
+                </button>
+                <button class="icon-btn">
+                    <i class="fas fa-bell"></i>
+                </button>
+            </div>
+        </header>
+
+        <nav class="tab-container">
+            <div class="tab active">العوالم</div>
+            <div class="tab">مباشر</div>
+            <div class="tab">متابَعين</div>
+            <div class="tab">مميز</div>
+            <div class="tab">اكتشاف</div>
+        </nav>
+
+        <main class="main-content">
+            <!-- فلتر العوالم -->
+            <div class="realms-filter">
+                <button class="filter-btn active">جميع العوالم</button>
+                <button class="filter-btn">المباشرة الآن</button>
+                <button class="filter-btn">الأكثر شعبية</button>
+                <button class="filter-btn">الجديدة</button>
+                <button class="filter-btn">التعليمية</button>
+                <button class="filter-btn">الترفيهية</button>
+                <button class="filter-btn">التقنية</button>
+                <button class="filter-btn">الرياضية</button>
+            </div>
+
+            <!-- شبكة العوالم التفاعلية -->
+            <div class="realms-grid" id="realmsContainer">
+                <!-- سيتم إضافة العوالم ديناميكياً -->
+            </div>
+
+            <!-- العوالم المباشرة -->
+            <div class="live-realms">
+                <div class="section-title">
+                    <div class="live-indicator"></div>
+                    عوالم مباشرة الآن
+                </div>
+                <div class="live-grid" id="liveRealmsContainer">
+                    <!-- سيتم إضافة العوالم المباشرة ديناميكياً -->
+                </div>
+            </div>
+
+            <!-- المساحة الفاضية البسيطة -->
+            <div class="content-spacer">
+                <div class="spacer-content">
+                    <i class="fas fa-arrow-up"></i>
+                    <span>وصلت إلى نهاية المحتوى الحالي</span>
+                </div>
+            </div>
+        </main>
+
+        <!-- نافذة إنشاء العالم الجديد -->
+        <div class="create-realm-overlay" id="createRealmOverlay">
+            <div class="create-realm-container">
+                <div class="create-realm-header">
+                    <div class="create-realm-title">إنشاء عالم جديد</div>
+                    <button class="close-create-realm" id="closeCreateRealm">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="create-realm-content">
+                    <form id="createRealmForm">
+                        <div class="form-group">
+                            <label class="form-label">اسم العالم</label>
+                            <input type="text" class="form-input" id="realmName" placeholder="أدخل اسم العالم المميز..." required maxlength="30">
+                            <div style="font-size: 12px; color: var(--text-muted); margin-top: 5px;">يمكنك استخدام حتى 30 حرف</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">وصف العالم</label>
+                            <textarea class="form-textarea" id="realmDescription" placeholder="صف عالمك بطريقة جذابة..." required maxlength="200"></textarea>
+                            <div style="font-size: 12px; color: var(--text-muted); margin-top: 5px;">يمكنك استخدام حتى 200 حرف</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">اختر أيقونة العالم</label>
+                            <div class="icon-selection" id="iconSelection">
+                                <!-- سيتم إضافة الأيقونات ديناميكياً -->
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">اختر التصنيفات</label>
+                            <div class="categories-selection" id="categoriesSelection">
+                                <!-- سيتم إضافة التصنيفات ديناميكياً -->
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">إعدادات الخصوصية</label>
+                            <div class="privacy-settings" id="privacySettings">
+                                <div class="privacy-option" data-value="public">
+                                    <div class="privacy-icon">
+                                        <i class="fas fa-globe"></i>
+                                    </div>
+                                    <div class="privacy-info">
+                                        <div class="privacy-title">عام</div>
+                                        <div class="privacy-description">يمكن للجميع رؤية العالم والانضمام إليه</div>
+                                    </div>
+                                </div>
+                                <div class="privacy-option" data-value="private">
+                                    <div class="privacy-icon">
+                                        <i class="fas fa-lock"></i>
+                                    </div>
+                                    <div class="privacy-info">
+                                        <div class="privacy-title">خاص</div>
+                                        <div class="privacy-description">فقط الأعضاء المدعوون يمكنهم الانضمام</div>
+                                    </div>
+                                </div>
+                                <div class="privacy-option" data-value="approval">
+                                    <div class="privacy-icon">
+                                        <i class="fas fa-user-check"></i>
+                                    </div>
+                                    <div class="privacy-info">
+                                        <div class="privacy-title">بموافقة</div>
+                                        <div class="privacy-description">يمكن للجميع طلب الانضمام ولكن يحتاج موافقتك</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">لون العالم</label>
+                            <select class="form-select" id="realmColor">
+                                <option value="gradient-realm">تدرج أرجواني - أزرق</option>
+                                <option value="gradient-primary">تدرج متعدد الألوان</option>
+                                <option value="gradient-secondary">تدرج أزرق - بنفسجي</option>
+                            </select>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="cancel-btn" id="cancelCreateRealm">إلغاء</button>
+                            <button type="submit" class="create-btn" id="submitCreateRealm" disabled>إنشاء العالم</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <nav class="bottom-nav-new">
+            <a href="#" class="nav-item-new">
+                <i class="fas fa-home nav-icon-new"></i>
+                <span>الرئيسية</span>
+            </a>
+            <a href="#" class="nav-item-new active">
+                <i class="fas fa-globe nav-icon-new"></i>
+                <span>العوالم</span>
+            </a>
+            <div class="nav-create-new" id="createRealmBtn">
+                <i class="fas fa-plus"></i>
+            </div>
+            <a href="#" class="nav-item-new">
+                <i class="fas fa-video nav-icon-new"></i>
+                <span>مباشر</span>
+            </a>
+            <a href="#" class="nav-item-new">
+                <i class="fas fa-user nav-icon-new"></i>
+                <span>حسابي</span>
+            </a>
+        </nav>
+    </div>
+
+    
+    <script src="assets/js/world_creator.js"></script>
+</body>
+</html>

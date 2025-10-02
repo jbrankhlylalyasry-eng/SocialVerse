@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SocialVerse - منصة الإبداع</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="assets/css/index.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- شريط العنوان -->
+        <header class="creative-header">
+            <button class="back-btn" id="backBtn">
+                <i class="fas fa-arrow-right"></i>
+            </button>
+            <div class="creative-title" id="creativeTitle">منصة الإبداع</div>
+            <div class="header-actions">
+                <button class="toggle-properties-btn" id="togglePropertiesBtn">
+                    <i class="fas fa-sliders-h"></i>
+                </button>
+                <button class="toggle-sidebar-btn" id="toggleSidebarBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <button class="icon-btn">
+                    <i class="fas fa-save"></i>
+                </button>
+                <button class="icon-btn">
+                    <i class="fas fa-share"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- المحتوى الرئيسي -->
+        <div class="creative-container">
+            <!-- الشريط الجانبي -->
+            <aside class="creative-sidebar" id="creativeSidebar">
+                <div class="sidebar-header">
+                    <div class="sidebar-title">
+                        <i class="fas fa-plus"></i>
+                        إنشاء محتوى جديد
+                    </div>
+                    <div class="create-buttons">
+                        <button class="create-btn" data-tool="editor">
+                            <i class="fas fa-edit"></i>
+                            محرر النصوص
+                        </button>
+                        <button class="create-btn" data-tool="design">
+                            <i class="fas fa-palette"></i>
+                            تصميم جرافيك
+                        </button>
+                        <button class="create-btn primary" data-tool="live">
+                            <i class="fas fa-video"></i>
+                            بث مباشر جديد
+                        </button>
+                    </div>
+                </div>
+                
+                <nav class="sidebar-nav">
+                    <div class="nav-section">
+                        <div class="nav-title">أدوات الإبداع</div>
+                        <div class="nav-item active" data-section="editor">
+                            <i class="fas fa-edit nav-icon"></i>
+                            <span>محرر المحتوى</span>
+                        </div>
+                        <div class="nav-item" data-section="live">
+                            <i class="fas fa-video nav-icon"></i>
+                            <span>البث المباشر</span>
+                        </div>
+                        <div class="nav-item" data-section="media">
+                            <i class="fas fa-photo-video nav-icon"></i>
+                            <span>استوديو الوسائط</span>
+                        </div>
+                        <div class="nav-item" data-section="templates">
+                            <i class="fas fa-th-large nav-icon"></i>
+                            <span>مكتبة القوالب</span>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-section">
+                        <div class="nav-title">مشاريعي</div>
+                        <div class="nav-item">
+                            <i class="fas fa-file-alt nav-icon"></i>
+                            <span>تصميم الشعار الجديد</span>
+                        </div>
+                        <div class="nav-item">
+                            <i class="fas fa-video nav-icon"></i>
+                            <span>بث تعليمي عن البرمجة</span>
+                        </div>
+                        <div class="nav-item">
+                            <i class="fas fa-image nav-icon"></i>
+                            <span>معرض الصور الشخصي</span>
+                        </div>
+                    </div>
+                </nav>
+            </aside>
+
+            <!-- منطقة العمل الرئيسية -->
+            <main class="creative-workspace">
+                <!-- محرر المحتوى -->
+                <div class="content-editor active" id="contentEditor">
+                    <div class="editor-toolbar">
+                        <div class="tool-group">
+                            <button class="tool-btn" data-tool="select">
+                                <i class="fas fa-mouse-pointer"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="tool-group">
+                            <button class="tool-btn" data-tool="text">
+                                <i class="fas fa-font"></i>
+                            </button>
+                            <button class="tool-btn" data-tool="shape">
+                                <i class="fas fa-square"></i>
+                            </button>
+                            <button class="tool-btn" data-tool="image">
+                                <i class="fas fa-image"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="tool-group">
+                            <select class="tool-select" id="fontFamily">
+                                <option value="Arial">Arial</option>
+                                <option value="Tahoma">Tahoma</option>
+                                <option value="Times New Roman">Times New Roman</option>
+                                <option value="Cairo">Cairo</option>
+                            </select>
+                            
+                            <select class="tool-select" id="fontSize">
+                                <option value="12">12px</option>
+                                <option value="14">14px</option>
+                                <option value="16">16px</option>
+                                <option value="18">18px</option>
+                                <option value="24">24px</option>
+                                <option value="32">32px</option>
+                            </select>
+                        </div>
+                        
+                        <div class="tool-group">
+                            <button class="tool-btn" data-style="bold">
+                                <i class="fas fa-bold"></i>
+                            </button>
+                            <button class="tool-btn" data-style="italic">
+                                <i class="fas fa-italic"></i>
+                            </button>
+                            <button class="tool-btn" data-style="underline">
+                                <i class="fas fa-underline"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="tool-group">
+                            <div class="color-picker">
+                                <div class="color-option active" style="background: #000000;" data-color="#000000"></div>
+                                <div class="color-option" style="background: #6366f1;" data-color="#6366f1"></div>
+                                <div class="color-option" style="background: #ec4899;" data-color="#ec4899"></div>
+                                <div class="color-option" style="background: #10b981;" data-color="#10b981"></div>
+                                <div class="color-option" style="background: #ffffff;" data-color="#ffffff"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="editor-area">
+                        <div class="properties-panel" id="propertiesPanel">
+                            <div class="panel-header">
+                                <div class="panel-title">خصائص العنصر</div>
+                                <button class="panel-close" id="panelClose">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="property-group">
+                                <label class="property-label">النص</label>
+                                <input type="text" class="property-input" id="elementText" placeholder="أدخل النص هنا">
+                            </div>
+                            
+                            <div class="property-group">
+                                <label class="property-label">لون النص</label>
+                                <div class="color-picker">
+                                    <div class="color-option active" style="background: #000000;" data-color="#000000"></div>
+                                    <div class="color-option" style="background: #6366f1;" data-color="#6366f1"></div>
+                                    <div class="color-option" style="background: #ec4899;" data-color="#ec4899"></div>
+                                    <div class="color-option" style="background: #10b981;" data-color="#10b981"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="property-group">
+                                <label class="property-label">حجم الخط</label>
+                                <div class="slider-container">
+                                    <input type="range" class="slider" id="fontSizeSlider" min="12" max="72" value="16">
+                                    <span id="fontSizeValue">16px</span>
+                                </div>
+                            </div>
+                            
+                            <div class="property-group">
+                                <label class="property-label">الشفافية</label>
+                                <div class="slider-container">
+                                    <input type="range" class="slider" id="opacitySlider" min="0" max="100" value="100">
+                                    <span id="opacityValue">100%</span>
+                                </div>
+                            </div>
+                            
+                            <div class="property-group">
+                                <label class="property-label">الدوران</label>
+                                <div class="slider-container">
+                                    <input type="range" class="slider" id="rotationSlider" min="0" max="360" value="0">
+                                    <span id="rotationValue">0°</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="preview-area">
+                            <div class="loading-overlay" id="canvasLoading">
+                                <div class="loading-spinner"></div>
+                            </div>
+                            <div class="canvas-container">
+                                <canvas id="creativeCanvas" width="800" height="600"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- استوديو البث المباشر -->
+                <div class="live-studio" id="liveStudio">
+                    <div class="studio-controls">
+                        <div style="display: flex; gap: 15px; align-items: center;">
+                            <button class="tool-btn active">
+                                <i class="fas fa-video"></i>
+                            </button>
+                            <button class="tool-btn">
+                                <i class="fas fa-microphone"></i>
+                            </button>
+                            <button class="tool-btn">
+                                <i class="fas fa-desktop"></i>
+                            </button>
+                            <div style="flex: 1;"></div>
+                            <button class="action-btn start-live-btn" id="startLiveBtn">
+                                <i class="fas fa-circle"></i>
+                                بدء البث المباشر
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="studio-preview">
+                        <div class="preview-container">
+                            <video class="preview-video" id="previewVideo" autoplay muted></video>
+                            <div class="live-overlay" id="liveOverlay">
+                                <div class="overlay-element" style="top: 20px; right: 20px;">
+                                    <i class="fas fa-circle" style="color: #ef4444;"></i>
+                                    LIVE
+                                </div>
+                                <div class="overlay-element" style="bottom: 20px; right: 20px;">
+                                    @ahmedmohamed
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="controls-sidebar">
+                            <div class="control-section">
+                                <div class="control-title">المشاهدات والتفاعل</div>
+                                <div style="background: var(--card-bg); padding: 15px; border-radius: var(--radius-md); text-align: center;">
+                                    <div style="font-size: 24px; font-weight: 700; margin-bottom: 5px;">0</div>
+                                    <div style="font-size: 12px; color: var(--text-secondary);">مشاهد حالي</div>
+                                </div>
+                            </div>
+                            
+                            <div class="control-section">
+                                <div class="control-title">إضافة عناصر</div>
+                                <div class="control-grid">
+                                    <button class="control-btn">
+                                        <i class="fas fa-text-height"></i>
+                                        <span>نص</span>
+                                    </button>
+                                    <button class="control-btn">
+                                        <i class="fas fa-image"></i>
+                                        <span>صورة</span>
+                                    </button>
+                                    <button class="control-btn">
+                                        <i class="fas fa-poll"></i>
+                                        <span>استطلاع</span>
+                                    </button>
+                                    <button class="control-btn">
+                                        <i class="fas fa-gift"></i>
+                                        <span>هدية</span>
+                                    </button>
+                                    <button class="control-btn">
+                                        <i class="fas fa-music"></i>
+                                        <span>موسيقى</span>
+                                    </button>
+                                    <button class="control-btn">
+                                        <i class="fas fa-comments"></i>
+                                        <span>تفاعل</span>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="control-section">
+                                <div class="control-title">إعدادات البث</div>
+                                <div style="display: flex; flex-direction: column; gap: 10px;">
+                                    <select class="property-input">
+                                        <option>جودة عالية (1080p)</option>
+                                        <option>جودة متوسطة (720p)</option>
+                                        <option>جودة منخفضة (480p)</option>
+                                    </select>
+                                    <select class="property-input">
+                                        <option>العربية</option>
+                                        <option>الإنجليزية</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="live-action-buttons">
+                                <button class="action-btn schedule-btn">
+                                    <i class="fas fa-calendar"></i>
+                                    جدولة
+                                </button>
+                                <button class="action-btn start-live-btn" style="flex: 2;">
+                                    <i class="fas fa-circle"></i>
+                                    بث مباشر
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- استوديو الوسائط -->
+                <div class="media-studio" id="mediaStudio">
+                    <div class="editor-toolbar">
+                        <div class="tool-group">
+                            <button class="tool-btn active">
+                                <i class="fas fa-upload"></i>
+                            </button>
+                            <button class="tool-btn">
+                                <i class="fas fa-folder-plus"></i>
+                            </button>
+                            <button class="tool-btn">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="tool-group">
+                            <button class="tool-btn">
+                                <i class="fas fa-crop"></i>
+                            </button>
+                            <button class="tool-btn">
+                                <i class="fas fa-adjust"></i>
+                            </button>
+                            <button class="tool-btn">
+                                <i class="fas fa-sliders-h"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="media-library">
+                        <div class="media-sidebar">
+                            <div class="media-categories">
+                                <button class="category-btn active">
+                                    <i class="fas fa-images"></i>
+                                    <span>جميع الوسائط</span>
+                                </button>
+                                <button class="category-btn">
+                                    <i class="fas fa-image"></i>
+                                    <span>الصور</span>
+                                </button>
+                                <button class="category-btn">
+                                    <i class="fas fa-video"></i>
+                                    <span>الفيديوهات</span>
+                                </button>
+                                <button class="category-btn">
+                                    <i class="fas fa-music"></i>
+                                    <span>الصوتيات</span>
+                                </button>
+                                <button class="category-btn">
+                                    <i class="fas fa-file"></i>
+                                    <span>المستندات</span>
+                                </button>
+                                <button class="category-btn">
+                                    <i class="fas fa-star"></i>
+                                    <span>المفضلة</span>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="media-grid" id="mediaGrid">
+                            <!-- سيتم ملؤها بالبيانات من JavaScript -->
+                        </div>
+                        
+                        <div class="media-preview">
+                            <div class="preview-header">
+                                <div class="panel-title">معاينة الوسائط</div>
+                            </div>
+                            <div class="preview-content">
+                                <img src="" alt="" class="preview-image" id="mediaPreview" style="display: none;">
+                                <div id="mediaPlaceholder" style="color: var(--text-secondary); text-align: center;">
+                                    <i class="fas fa-image" style="font-size: 48px; margin-bottom: 10px; opacity: 0.5;"></i>
+                                    <div>اختر وسيطاً للمعاينة</div>
+                                </div>
+                            </div>
+                            <div class="media-actions">
+                                <button class="action-btn schedule-btn" style="flex: 1;">
+                                    <i class="fas fa-download"></i>
+                                    تحميل
+                                </button>
+                                <button class="action-btn start-live-btn" style="flex: 1;">
+                                    <i class="fas fa-plus"></i>
+                                    إضافة
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- مكتبة القوالب -->
+                <div class="templates-library" id="templatesLibrary">
+                    <div class="editor-toolbar">
+                        <div class="tool-group">
+                            <button class="tool-btn active">
+                                <i class="fas fa-th-large"></i>
+                            </button>
+                            <button class="tool-btn">
+                                <i class="fas fa-list"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="tool-group">
+                            <select class="tool-select">
+                                <option>جميع الفئات</option>
+                                <option>وسائط اجتماعية</option>
+                                <option>عروض تقديمية</option>
+                                <option>تصاميم ويب</option>
+                                <option>فيديوهات</option>
+                            </select>
+                            
+                            <select class="tool-select">
+                                <option>الأكثر استخداماً</option>
+                                <option>الأحدث</option>
+                                <option>الأعلى تقييماً</option>
+                            </select>
+                        </div>
+                        
+                        <div class="tool-group">
+                            <button class="tool-btn">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="templates-grid" id="templatesGrid">
+                        <!-- سيتم ملؤها بالبيانات من JavaScript -->
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- شريط التنقل السفلي -->
+        <nav class="bottom-nav-new">
+            <a href="الصفحة الرئيسية.html" class="nav-item-new">
+                <i class="fas fa-home nav-icon-new"></i>
+                <span>الرئيسية</span>
+            </a>
+            <a href="صفحة الاستكشاف المتقدم.html" class="nav-item-new">
+                <i class="fas fa-compass nav-icon-new"></i>
+                <span>استكشاف</span>
+            </a>
+            <a href="محتويات العالم معدل.html" class="nav-item-new">
+                <i class="fas fa-globe nav-icon-new"></i>
+                <span>العوالم</span>
+            </a>
+            <a href="نظام التواصل والرسائل.html" class="nav-item-new">
+                <i class="fas fa-comments nav-icon-new"></i>
+                <span>المراسلات</span>
+            </a>
+            <a href="صفحة حسابي.html" class="nav-item-new">
+                <i class="fas fa-user nav-icon-new"></i>
+                <span>حسابي</span>
+            </a>
+        </nav>
+    </div>
+
+    
+    <script src="assets/js/index.js"></script>
+</body>
+</html>

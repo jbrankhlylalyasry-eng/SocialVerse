@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SocialVerse - القصص</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="assets/css/stories.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- شريط العنوان -->
+        <header class="stories-header">
+            <button class="back-btn" id="backBtn">
+                <i class="fas fa-arrow-right"></i>
+            </button>
+            <div class="stories-title">القصص</div>
+            <div class="header-actions">
+                <button class="icon-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="icon-btn">
+                    <i class="fas fa-ellipsis-h"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- المحتوى الرئيسي -->
+        <main class="stories-content">
+            <!-- قسم قصصي -->
+            <section class="my-stories-section">
+                <h2 class="section-title">
+                    <i class="fas fa-user-circle"></i>
+                    قصصي
+                </h2>
+                <div class="my-stories-container">
+                    <!-- بطاقة إضافة قصة -->
+                    <div class="add-story-card" id="addStoryBtn">
+                        <div class="add-story-avatar">
+                            <i class="fas fa-plus add-story-icon"></i>
+                            <span>جديد</span>
+                        </div>
+                        <div class="add-story-label">أضف قصة</div>
+                    </div>
+                    
+                    <!-- قصصي الحالية -->
+                    <div class="story-preview-item" style="background: var(--gradient-primary);">
+                        <div style="display: flex; align-items: center; justify-content: center; height: 100%; color: white; font-size: 24px;">
+                            🌟
+                        </div>
+                        <div class="story-preview-duration">4س</div>
+                    </div>
+                    
+                    <div class="story-preview-item" style="background: var(--gradient-secondary);">
+                        <div style="display: flex; align-items: center; justify-content: center; height: 100%; color: white; font-size: 24px;">
+                            🎉
+                        </div>
+                        <div class="story-preview-duration">8س</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- قصص الآخرين -->
+            <section class="all-stories-section">
+                <h2 class="section-title">
+                    <i class="fas fa-users"></i>
+                    القصص النشطة
+                </h2>
+                <div class="stories-grid" id="storiesGrid">
+                    <!-- سيتم إضافة القصص ديناميكياً -->
+                </div>
+            </section>
+        </main>
+
+        <!-- مشغل القصص -->
+        <div class="story-viewer" id="storyViewer">
+            <!-- شريط التقدم -->
+            <div class="story-progress-container" id="storyProgressContainer">
+                <!-- سيتم إضافة أشرطة التقدم ديناميكياً -->
+            </div>
+            
+            <!-- معلومات المستخدم -->
+            <div class="story-header">
+                <div class="story-user-info">
+                    <div class="story-user-avatar" id="storyUserAvatar">م</div>
+                    <div class="story-user-details">
+                        <div class="story-user-name" id="storyUserName">محمد أحمد</div>
+                        <div class="story-post-time" id="storyPostTime">منذ 4 ساعات</div>
+                    </div>
+                </div>
+                <button class="story-close-btn" id="closeStoryViewer">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <!-- محتوى القصة -->
+            <div class="story-content">
+                <img class="story-media" id="storyMedia" src="" alt="قصة">
+                
+                <!-- التنقل -->
+                <div class="story-navigation story-prev" id="prevStory"></div>
+                <div class="story-navigation story-next" id="nextStory"></div>
+                
+                <!-- التفاعلات -->
+                <div class="story-reactions" id="storyReactions">
+                    <!-- سيتم إضافة التفاعلات ديناميكياً -->
+                </div>
+            </div>
+            
+            <!-- أدوات التفاعل -->
+            <div class="story-actions">
+                <div class="story-action-buttons">
+                    <button class="story-action-btn" id="likeStoryBtn">
+                        <i class="far fa-heart"></i>
+                    </button>
+                    <button class="story-action-btn" id="shareStoryBtn">
+                        <i class="far fa-paper-plane"></i>
+                    </button>
+                </div>
+                
+                <div class="story-input-container">
+                    <input type="text" class="story-input" id="storyInput" placeholder="أرسل رداً...">
+                    <button class="story-send-btn" id="sendStoryReply">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+                
+                <div class="story-action-buttons">
+                    <button class="story-action-btn" id="moreActionsBtn">
+                        <i class="fas fa-ellipsis-h"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- نافذة إنشاء قصة -->
+        <div class="create-story-modal" id="createStoryModal">
+            <div class="create-story-content">
+                <div class="create-story-header">
+                    <div class="create-story-title">إنشاء قصة جديدة</div>
+                    <button class="close-create-story" id="closeCreateStory">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="create-story-body">
+                    <div class="story-creation-options">
+                        <div class="creation-option" id="createPhotoStory">
+                            <div class="creation-icon">
+                                <i class="fas fa-camera"></i>
+                            </div>
+                            <div class="creation-label">التقاط صورة</div>
+                        </div>
+                        <div class="creation-option" id="createVideoStory">
+                            <div class="creation-icon">
+                                <i class="fas fa-video"></i>
+                            </div>
+                            <div class="creation-label">تسجيل فيديو</div>
+                        </div>
+                        <div class="creation-option" id="createTextStory">
+                            <div class="creation-icon">
+                                <i class="fas fa-font"></i>
+                            </div>
+                            <div class="creation-label">قصة نصية</div>
+                        </div>
+                        <div class="creation-option" id="uploadStory">
+                            <div class="creation-icon">
+                                <i class="fas fa-upload"></i>
+                            </div>
+                            <div class="creation-label">رفع من الجهاز</div>
+                        </div>
+                    </div>
+                    
+                    <div class="recent-stories">
+                        <div class="recent-stories-title">قصص سريعة</div>
+                        <div class="recent-stories-list">
+                            <div class="recent-story-item">
+                                <div class="recent-story-avatar">🌟</div>
+                                <div class="recent-story-name">تحدي</div>
+                            </div>
+                            <div class="recent-story-item">
+                                <div class="recent-story-avatar">❓</div>
+                                <div class="recent-story-name">سؤال</div>
+                            </div>
+                            <div class="recent-story-item">
+                                <div class="recent-story-avatar">📊</div>
+                                <div class="recent-story-name">استطلاع</div>
+                            </div>
+                            <div class="recent-story-item">
+                                <div class="recent-story-avatar">🎵</div>
+                                <div class="recent-story-name">موسيقى</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- شريط التنقل السفلي -->
+        <nav class="bottom-nav-new">
+            <a href="الصفحة الرئيسية.html" class="nav-item-new">
+                <i class="fas fa-home nav-icon-new"></i>
+                <span>الرئيسية</span>
+            </a>
+            <a href="#" class="nav-item-new">
+                <i class="fas fa-compass nav-icon-new"></i>
+                <span>استكشاف</span>
+            </a>
+            <a href="محتويات العالم معدل.html" class="nav-item-new">
+                <i class="fas fa-globe nav-icon-new"></i>
+                <span>العوالم</span>
+            </a>
+            <a href="#" class="nav-item-new active">
+                <i class="fas fa-story-circle nav-icon-new"></i>
+                <span>القصص</span>
+            </a>
+            <a href="صفحة حسابي.html" class="nav-item-new">
+                <i class="fas fa-user nav-icon-new"></i>
+                <span>حسابي</span>
+            </a>
+        </nav>
+    </div>
+
+    
+    <script src="assets/js/stories.js"></script>
+</body>
+</html>

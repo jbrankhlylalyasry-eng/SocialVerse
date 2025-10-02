@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SocialVerse - لوحة التحكم</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <link rel="stylesheet" href="assets/css/creative_dashboard.css">
+</head>
+<body>
+    <!-- مؤشر التحميل -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <div class="dashboard-container">
+        <!-- الشريط الجانبي -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">SocialVerse</div>
+                <button class="toggle-sidebar" id="toggleSidebar">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <!-- القسم الرئيسي -->
+                <div class="nav-section">
+                    <div class="nav-title">الرئيسية</div>
+                    <div class="nav-item active" data-page="overview" data-tooltip="نظرة عامة">
+                        <i class="fas fa-home nav-icon"></i>
+                        <span class="nav-text">نظرة عامة</span>
+                    </div>
+                    <div class="nav-item" data-page="analytics" data-tooltip="التحليلات">
+                        <i class="fas fa-chart-bar nav-icon"></i>
+                        <span class="nav-text">التحليلات</span>
+                    </div>
+                </div>
+
+                <!-- إدارة المحتوى -->
+                <div class="nav-section">
+                    <div class="nav-title">إدارة المحتوى</div>
+                    <div class="nav-item" data-page="realms" data-tooltip="العوالم">
+                        <i class="fas fa-globe nav-icon"></i>
+                        <span class="nav-text">العوالم</span>
+                        <span class="nav-badge">24</span>
+                    </div>
+                    <div class="nav-item" data-page="posts" data-tooltip="المنشورات">
+                        <i class="fas fa-file-alt nav-icon"></i>
+                        <span class="nav-text">المنشورات</span>
+                        <span class="nav-badge">156</span>
+                    </div>
+                    <div class="nav-item" data-page="comments" data-tooltip="التعليقات">
+                        <i class="fas fa-comments nav-icon"></i>
+                        <span class="nav-text">التعليقات</span>
+                        <span class="nav-badge">89</span>
+                    </div>
+                </div>
+
+                <!-- إدارة المستخدمين -->
+                <div class="nav-section">
+                    <div class="nav-title">إدارة المستخدمين</div>
+                    <div class="nav-item" data-page="users" data-tooltip="المستخدمين">
+                        <i class="fas fa-users nav-icon"></i>
+                        <span class="nav-text">المستخدمين</span>
+                        <span class="nav-badge">1.2K</span>
+                    </div>
+                    <div class="nav-item" data-page="moderation" data-tooltip="المراقبة">
+                        <i class="fas fa-shield-alt nav-icon"></i>
+                        <span class="nav-text">المراقبة</span>
+                        <span class="nav-badge">12</span>
+                    </div>
+                    <div class="nav-item" data-page="reports" data-tooltip="التقارير">
+                        <i class="fas fa-flag nav-icon"></i>
+                        <span class="nav-text">التقارير</span>
+                        <span class="nav-badge">7</span>
+                    </div>
+                </div>
+
+                <!-- الإعدادات -->
+                <div class="nav-section">
+                    <div class="nav-title">الإعدادات</div>
+                    <div class="nav-item" data-page="settings" data-tooltip="الإعدادات العامة">
+                        <i class="fas fa-cog nav-icon"></i>
+                        <span class="nav-text">الإعدادات العامة</span>
+                    </div>
+                    <div class="nav-item" data-page="notifications" data-tooltip="الإشعارات">
+                        <i class="fas fa-bell nav-icon"></i>
+                        <span class="nav-text">الإشعارات</span>
+                    </div>
+                    <div class="nav-item" data-page="security" data-tooltip="الأمان">
+                        <i class="fas fa-lock nav-icon"></i>
+                        <span class="nav-text">الأمان</span>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <div class="user-avatar">AD</div>
+                    <div class="user-info">
+                        <div class="user-name">أحمد الدوسري</div>
+                        <div class="user-role">مدير النظام</div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- المحتوى الرئيسي -->
+        <main class="main-content" id="mainContent">
+            <!-- شريط العنوان العلوي -->
+            <header class="top-header">
+                <div class="page-info">
+                    <h1>لوحة التحكم</h1>
+                    <p>مرحباً بعودتك، أحمد! 👋</p>
+                </div>
+                
+                <div class="header-actions">
+                    <div class="search-box">
+                        <input type="text" class="search-input" placeholder="ابحث في اللوحة...">
+                        <i class="fas fa-search search-icon"></i>
+                    </div>
+                    
+                    <button class="mobile-menu-btn" id="mobileMenuBtn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    
+                    <div class="action-buttons">
+                        <button class="action-btn">
+                            <i class="fas fa-bell"></i>
+                            <span class="badge">3</span>
+                        </button>
+                        <button class="action-btn">
+                            <i class="fas fa-envelope"></i>
+                            <span class="badge">5</span>
+                        </button>
+                        <button class="action-btn">
+                            <i class="fas fa-cog"></i>
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- محتوى اللوحة -->
+            <div class="dashboard-content">
+                <!-- فلترة البيانات -->
+                <div class="filter-bar">
+                    <select class="filter-select" id="statusFilter">
+                        <option value="">جميع الحالات</option>
+                        <option value="active">نشط</option>
+                        <option value="pending">قيد المراجعة</option>
+                        <option value="banned">محظور</option>
+                    </select>
+                    <select class="filter-select" id="sortFilter">
+                        <option value="newest">الأحدث أولاً</option>
+                        <option value="oldest">الأقدم أولاً</option>
+                        <option value="most-active">الأكثر نشاطاً</option>
+                    </select>
+                    <button class="card-btn" id="exportBtn">
+                        <i class="fas fa-download"></i> تصدير البيانات
+                    </button>
+                </div>
+
+                <!-- الإحصائيات السريعة -->
+                <div class="stats-grid">
+                    <div class="stat-card users">
+                        <div class="stat-header">
+                            <div class="stat-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="stat-trend trend-up">
+                                <i class="fas fa-arrow-up"></i>
+                                12.5%
+                            </div>
+                        </div>
+                        <div class="stat-value">1,248</div>
+                        <div class="stat-label">إجمالي المستخدمين</div>
+                    </div>
+
+                    <div class="stat-card realms">
+                        <div class="stat-header">
+                            <div class="stat-icon">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <div class="stat-trend trend-up">
+                                <i class="fas fa-arrow-up"></i>
+                                8.3%
+                            </div>
+                        </div>
+                        <div class="stat-value">24</div>
+                        <div class="stat-label">عالم نشط</div>
+                    </div>
+
+                    <div class="stat-card activity">
+                        <div class="stat-header">
+                            <div class="stat-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="stat-trend trend-up">
+                                <i class="fas fa-arrow-up"></i>
+                                23.1%
+                            </div>
+                        </div>
+                        <div class="stat-value">856</div>
+                        <div class="stat-label">نشاط اليوم</div>
+                    </div>
+
+                    <div class="stat-card revenue">
+                        <div class="stat-header">
+                            <div class="stat-icon">
+                                <i class="fas fa-dollar-sign"></i>
+                            </div>
+                            <div class="stat-trend trend-up">
+                                <i class="fas fa-arrow-up"></i>
+                                5.2%
+                            </div>
+                        </div>
+                        <div class="stat-value">$2,845</div>
+                        <div class="stat-label">الإيرادات</div>
+                    </div>
+                </div>
+
+                <!-- الشبكات الرئيسية -->
+                <div class="content-grid">
+                    <!-- العوالم النشطة -->
+                    <div class="grid-card">
+                        <div class="card-header">
+                            <div class="card-title">العوالم النشطة</div>
+                            <div class="card-actions">
+                                <button class="card-btn">عرض الكل</button>
+                                <button class="card-btn">إضافة عالم</button>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>اسم العالم</th>
+                                        <th>المشرف</th>
+                                        <th>الأعضاء</th>
+                                        <th>النشاط</th>
+                                        <th>الحالة</th>
+                                        <th>الإجراءات</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="realmsTableBody">
+                                    <!-- سيتم ملؤها بالبيانات من JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- النشاط الأخير والرسم البياني -->
+                    <div class="grid-card">
+                        <div class="card-header">
+                            <div class="card-title">النشاط الأخير</div>
+                            <div class="card-actions">
+                                <button class="card-btn">عرض الكل</button>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="activity-list" id="activityList">
+                                <!-- سيتم ملؤها بالبيانات من JavaScript -->
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="activityChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- التحكم في الصفحة -->
+                <div class="pagination">
+                    <div class="pagination-info">
+                        عرض 1-10 من 1248 عنصر
+                    </div>
+                    <div class="pagination-controls">
+                        <button class="page-btn">السابق</button>
+                        <button class="page-btn active">1</button>
+                        <button class="page-btn">2</button>
+                        <button class="page-btn">3</button>
+                        <button class="page-btn">...</button>
+                        <button class="page-btn">125</button>
+                        <button class="page-btn">التالي</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    
+    <script src="assets/js/creative_dashboard.js"></script>
+</body>
+</html>

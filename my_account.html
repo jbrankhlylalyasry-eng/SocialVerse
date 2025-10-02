@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SocialVerse - حسابي</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="assets/css/my_account.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- شريط العنوان -->
+        <header class="profile-header">
+            <button class="back-btn" id="backBtn">
+                <i class="fas fa-arrow-right"></i>
+            </button>
+            <div class="profile-title">حسابي</div>
+            <div class="header-actions">
+                <button class="icon-btn">
+                    <i class="fas fa-cog"></i>
+                </button>
+                <button class="icon-btn">
+                    <i class="fas fa-bell"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- قسم معلومات الملف الشخصي -->
+        <section class="profile-info-section">
+            <div class="cover-photo">
+                <div class="cover-photo-actions">
+                    <button class="icon-btn" style="background: rgba(0,0,0,0.5);">
+                        <i class="fas fa-camera"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="profile-photo-section">
+                <div class="profile-photo">
+                    👤
+                    <button class="edit-photo-btn">
+                        <i class="fas fa-camera"></i>
+                    </button>
+                </div>
+                <div class="profile-details">
+                    <div class="profile-name">أحمد محمد</div>
+                    <div class="profile-username">@ahmedmohamed</div>
+                    <div class="profile-bio">
+                        مطور واجهات مستخدم، مهتم بالتقنية والتصميم. أحب مشاركة المعرفة والتعلم المستمر.
+                    </div>
+                    <div class="profile-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">12</span>
+                            <span class="stat-label">عالم</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">1.2K</span>
+                            <span class="stat-label">متابِع</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">856</span>
+                            <span class="stat-label">متابَع</span>
+                        </div>
+                    </div>
+                    <div class="profile-actions">
+                        <button class="action-btn edit-profile-btn" id="editProfileBtn">
+                            <i class="fas fa-edit"></i>
+                            تعديل الملف
+                        </button>
+                        <button class="action-btn share-profile-btn">
+                            <i class="fas fa-share"></i>
+                            مشاركة
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- تبويبات الملف الشخصي -->
+        <nav class="profile-tabs">
+            <button class="profile-tab active" data-tab="realms">عوالمي</button>
+            <button class="profile-tab" data-tab="achievements">الإنجازات</button>
+            <button class="profile-tab" data-tab="activity">النشاط</button>
+            <button class="profile-tab" data-tab="settings">الإعدادات</button>
+        </nav>
+
+        <!-- المحتوى الرئيسي -->
+        <main class="main-content">
+            <!-- قسم عوالمي -->
+            <section class="content-section active" id="realms-content">
+                <div class="section-header">
+                    <div class="section-title">عوالمي</div>
+                    <div class="section-actions">
+                        <button class="filter-btn active">الكل</button>
+                        <button class="filter-btn">نشطة</button>
+                        <button class="filter-btn">مؤرشفة</button>
+                    </div>
+                </div>
+                <div class="realms-grid" id="myRealmsGrid">
+                    <!-- سيتم إضافة العوالم ديناميكياً -->
+                </div>
+            </section>
+
+            <!-- قسم الإنجازات -->
+            <section class="content-section" id="achievements-content">
+                <div class="section-header">
+                    <div class="section-title">إنجازاتي</div>
+                    <div class="section-actions">
+                        <button class="filter-btn active">الكل</button>
+                        <button class="filter-btn">مكتملة</button>
+                        <button class="filter-btn">قيد التقدم</button>
+                    </div>
+                </div>
+                <div class="achievements-grid" id="achievementsGrid">
+                    <!-- سيتم إضافة الإنجازات ديناميكياً -->
+                </div>
+            </section>
+
+            <!-- قسم النشاط -->
+            <section class="content-section" id="activity-content">
+                <div class="section-header">
+                    <div class="section-title">نشاطي</div>
+                    <div class="section-actions">
+                        <button class="filter-btn active">الكل</button>
+                        <button class="filter-btn">منشورات</button>
+                        <button class="filter-btn">تفاعلات</button>
+                    </div>
+                </div>
+                <div class="realms-grid" id="activityGrid">
+                    <!-- سيتم إضافة النشاط ديناميكياً -->
+                </div>
+            </section>
+
+            <!-- قسم الإعدادات -->
+            <section class="content-section" id="settings-content">
+                <div class="section-header">
+                    <div class="section-title">الإعدادات</div>
+                </div>
+                <div class="settings-list">
+                    <div class="settings-item" data-setting="account">
+                        <div class="settings-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="settings-info">
+                            <div class="settings-title">الحساب</div>
+                            <div class="settings-description">إدارة معلومات حسابك الشخصي</div>
+                        </div>
+                        <div class="settings-arrow">
+                            <i class="fas fa-chevron-left"></i>
+                        </div>
+                    </div>
+                    <div class="settings-item" data-setting="privacy">
+                        <div class="settings-icon">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <div class="settings-info">
+                            <div class="settings-title">الخصوصية</div>
+                            <div class="settings-description">تحكم في إعدادات الخصوصية والأمان</div>
+                        </div>
+                        <div class="settings-arrow">
+                            <i class="fas fa-chevron-left"></i>
+                        </div>
+                    </div>
+                    <div class="settings-item" data-setting="notifications">
+                        <div class="settings-icon">
+                            <i class="fas fa-bell"></i>
+                        </div>
+                        <div class="settings-info">
+                            <div class="settings-title">الإشعارات</div>
+                            <div class="settings-description">إدارة الإشعارات والتنبيهات</div>
+                        </div>
+                        <div class="settings-arrow">
+                            <i class="fas fa-chevron-left"></i>
+                        </div>
+                    </div>
+                    <div class="settings-item" data-setting="appearance">
+                        <div class="settings-icon">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <div class="settings-info">
+                            <div class="settings-title">المظهر</div>
+                            <div class="settings-description">تخصيص مظهر التطبيق</div>
+                        </div>
+                        <div class="settings-arrow">
+                            <i class="fas fa-chevron-left"></i>
+                        </div>
+                    </div>
+                    <div class="settings-item" data-setting="language">
+                        <div class="settings-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <div class="settings-info">
+                            <div class="settings-title">اللغة</div>
+                            <div class="settings-description">اختر لغة التطبيق المفضلة</div>
+                        </div>
+                        <div class="settings-arrow">
+                            <i class="fas fa-chevron-left"></i>
+                        </div>
+                    </div>
+                    <div class="settings-item" data-setting="help">
+                        <div class="settings-icon">
+                            <i class="fas fa-question-circle"></i>
+                        </div>
+                        <div class="settings-info">
+                            <div class="settings-title">المساعدة</div>
+                            <div class="settings-description">الدعم والمساعدة والأسئلة الشائعة</div>
+                        </div>
+                        <div class="settings-arrow">
+                            <i class="fas fa-chevron-left"></i>
+                        </div>
+                    </div>
+                    <div class="settings-item" data-setting="about">
+                        <div class="settings-icon">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                        <div class="settings-info">
+                            <div class="settings-title">عن التطبيق</div>
+                            <div class="settings-description">معلومات عن الإصدار والشروط</div>
+                        </div>
+                        <div class="settings-arrow">
+                            <i class="fas fa-chevron-left"></i>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- المساحة الفاضية البسيطة في نهاية المحتوى -->
+            <div class="content-spacer">
+                <div class="spacer-content">
+                    <i class="fas fa-arrow-up"></i>
+                    <span>وصلت إلى نهاية المحتوى الحالي</span>
+                </div>
+            </div>
+        </main>
+
+        <!-- شريط التنقل السفلي -->
+        <nav class="bottom-nav-new">
+            <a href="#" class="nav-item-new">
+                <i class="fas fa-home nav-icon-new"></i>
+                <span>الرئيسية</span>
+            </a>
+            <a href="#" class="nav-item-new">
+                <i class="fas fa-compass nav-icon-new"></i>
+                <span>استكشاف</span>
+            </a>
+            <a href="#" class="nav-item-new">
+                <i class="fas fa-globe nav-icon-new"></i>
+                <span>العوالم</span>
+            </a>
+            <a href="#" class="nav-item-new">
+                <i class="fas fa-video nav-icon-new"></i>
+                <span>مباشر</span>
+            </a>
+            <a href="#" class="nav-item-new active">
+                <i class="fas fa-user nav-icon-new"></i>
+                <span>حسابي</span>
+            </a>
+        </nav>
+    </div>
+
+    
+    <script src="assets/js/my_account.js"></script>
+</body>
+</html>

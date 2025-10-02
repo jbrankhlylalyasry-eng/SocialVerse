@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SocialVerse - المراسلات</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="assets/css/messages.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- شريط العنوان -->
+        <header class="messages-header">
+            <button class="back-btn" id="backBtn">
+                <i class="fas fa-arrow-right"></i>
+            </button>
+            <div class="messages-title">المراسلات</div>
+            <div class="header-actions">
+                <button class="icon-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="icon-btn">
+                    <i class="fas fa-ellipsis-h"></i>
+                </button>
+                <button class="toggle-sidebar-btn" id="toggleSidebar">
+                    <i class="fas fa-comments"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- مؤشر حالة الاتصال -->
+        <div class="connection-status" id="connectionStatus">متصل</div>
+
+        <!-- المحتوى الرئيسي -->
+        <div class="messages-container">
+            <!-- الشريط الجانبي للمحادثات -->
+            <aside class="conversations-sidebar" id="conversationsSidebar">
+                <div class="sidebar-header">
+                    <div class="search-container">
+                        <input type="text" class="search-input" placeholder="ابحث في المحادثات...">
+                        <i class="fas fa-search search-icon"></i>
+                    </div>
+                </div>
+                
+                <button class="new-chat-btn" id="newChatBtn">
+                    <i class="fas fa-plus"></i>
+                    محادثة جديدة
+                </button>
+                
+                <div class="conversations-list" id="conversationsList">
+                    <!-- سيتم ملؤها بالبيانات من JavaScript -->
+                </div>
+            </aside>
+
+            <!-- منطقة المحادثة الرئيسية -->
+            <main class="chat-area">
+                <div class="chat-header">
+                    <div class="chat-user-info">
+                        <div class="chat-user-avatar" id="currentChatAvatar">م</div>
+                        <div class="chat-user-details">
+                            <div class="chat-user-name" id="currentChatName">اختر محادثة لبدء المراسلة</div>
+                            <div class="chat-user-status" id="currentChatStatus">...</div>
+                        </div>
+                    </div>
+                    <div class="chat-actions" id="chatActions" style="display: none;">
+                        <button class="call-btn" id="audioCallBtn">
+                            <i class="fas fa-phone"></i>
+                        </button>
+                        <button class="video-call-btn" id="videoCallBtn">
+                            <i class="fas fa-video"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="messages-area" id="messagesArea">
+                    <div class="welcome-message">
+                        <div style="text-align: center; color: var(--text-secondary); padding: 40px 20px;">
+                            <i class="fas fa-comments" style="font-size: 48px; margin-bottom: 15px; opacity: 0.5;"></i>
+                            <h3 style="margin-bottom: 10px;">مرحباً بك في نظام المراسلات</h3>
+                            <p>اختر محادثة من القائمة لبدء التحدث مع أصدقائك</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="message-input-area" id="messageInputArea" style="display: none;">
+                    <div class="input-container">
+                        <button class="attachment-btn" id="attachmentBtn">
+                            <i class="fas fa-paperclip"></i>
+                        </button>
+                        <textarea class="message-input" id="messageInput" placeholder="اكتب رسالتك هنا..." rows="1"></textarea>
+                        <button class="send-btn" id="sendBtn" disabled>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="media-selector" id="mediaSelector">
+                        <div class="media-option" data-type="image">
+                            <i class="fas fa-image"></i>
+                            <span>صورة</span>
+                        </div>
+                        <div class="media-option" data-type="video">
+                            <i class="fas fa-video"></i>
+                            <span>فيديو</span>
+                        </div>
+                        <div class="media-option" data-type="file">
+                            <i class="fas fa-file"></i>
+                            <span>ملف</span>
+                        </div>
+                        <div class="media-option" data-type="location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>موقع</span>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- نافذة المكالمة -->
+        <div class="call-window" id="callWindow">
+            <div class="call-container">
+                <div class="call-header">
+                    <div class="call-user-info">
+                        <div class="call-user-avatar" id="callUserAvatar">م</div>
+                        <div>
+                            <div class="chat-user-name" id="callUserName">محمد أحمد</div>
+                            <div class="call-status" id="callStatus">جاري الاتصال...</div>
+                        </div>
+                    </div>
+                    <div class="call-duration" id="callDuration">00:00</div>
+                </div>
+                <div class="call-content">
+                    <video class="remote-video" id="remoteVideo" autoplay muted></video>
+                    <video class="local-video" id="localVideo" autoplay muted></video>
+                </div>
+                <div class="call-controls">
+                    <button class="control-btn mute-btn" id="muteBtn">
+                        <i class="fas fa-microphone"></i>
+                    </button>
+                    <button class="control-btn video-btn" id="videoToggleBtn">
+                        <i class="fas fa-video"></i>
+                    </button>
+                    <button class="control-btn end-call-btn" id="endCallBtn">
+                        <i class="fas fa-phone"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- شريط التنقل السفلي -->
+        <nav class="bottom-nav-new">
+            <a href="الصفحة الرئيسية.html" class="nav-item-new">
+                <i class="fas fa-home nav-icon-new"></i>
+                <span>الرئيسية</span>
+            </a>
+            <a href="#" class="nav-item-new">
+                <i class="fas fa-compass nav-icon-new"></i>
+                <span>استكشاف</span>
+            </a>
+            <a href="محتويات العالم معدل.html" class="nav-item-new">
+                <i class="fas fa-globe nav-icon-new"></i>
+                <span>العوالم</span>
+            </a>
+            <a href="#" class="nav-item-new">
+                <i class="fas fa-video nav-icon-new"></i>
+                <span>مباشر</span>
+            </a>
+            <a href="صفحة حسابي.html" class="nav-item-new">
+                <i class="fas fa-user nav-icon-new"></i>
+                <span>حسابي</span>
+            </a>
+        </nav>
+    </div>
+
+    
+    <script src="assets/js/messages.js"></script>
+</body>
+</html>

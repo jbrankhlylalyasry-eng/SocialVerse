@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SocialVerse - عالم التفاعل</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="assets/css/world_content_edited.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- شريط العودة والعنوان -->
+        <header class="realm-header">
+            <button class="back-btn" id="backBtn">
+                <i class="fas fa-arrow-right"></i>
+            </button>
+            <div class="realm-title-section">
+                <div class="realm-icon-header">
+                    <i class="fas fa-utensils" id="realmIcon"></i>
+                </div>
+                <div class="realm-title-header" id="realmTitle">عالم الطبخ</div>
+            </div>
+            <div class="header-actions">
+                <button class="icon-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="icon-btn">
+                    <i class="fas fa-ellipsis-h"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- معلومات العالم -->
+        <section class="realm-info-section">
+            <div class="realm-info-content">
+                <div class="realm-stats">
+                    <div class="stat-item">
+                        <i class="fas fa-users"></i>
+                        <span id="membersCount">12.5K عضو</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-fire"></i>
+                        <span id="onlineCount">2.4K متواجد</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-star"></i>
+                        <span id="rating">4.8/5</span>
+                    </div>
+                </div>
+                <div class="realm-description" id="realmDescription">
+                    تعلم الطبخ مع أشهر الطهاة، شارك في تحديات الطهي المباشر وابدأ رحلتك الطهوية مع مجتمع من عشاق الطبخ
+                </div>
+                <div class="realm-tags" id="realmTags">
+                    <!-- سيتم إضافة الوسوم ديناميكياً -->
+                </div>
+            </div>
+        </section>
+
+        <!-- تبويبات المحتوى -->
+        <nav class="content-tabs">
+            <button class="content-tab active" data-tab="all">الكل</button>
+            <button class="content-tab" data-tab="challenges">التحديات</button>
+            <button class="content-tab" data-tab="education">التعليم</button>
+            <button class="content-tab" data-tab="discussions">المناقشات</button>
+            <button class="content-tab" data-tab="live">البث المباشر</button>
+            <button class="content-tab" data-tab="media">الوسائط</button>
+        </nav>
+
+        <!-- المحتوى الرئيسي -->
+        <main class="main-content">
+            <!-- قسم الكل -->
+            <section class="content-section active" id="all-content">
+                <div class="section-header">
+                    <div class="section-title">أحدث المحتويات</div>
+                    <div class="section-actions">
+                        <button class="filter-btn active">الأحدث</button>
+                        <button class="filter-btn">الأكثر تفاعلاً</button>
+                        <button class="filter-btn">الأعلى تقييماً</button>
+                    </div>
+                </div>
+                <div class="content-grid" id="allContentGrid">
+                    <!-- سيتم إضافة المحتوى ديناميكياً -->
+                </div>
+            </section>
+
+            <!-- قسم التحديات -->
+            <section class="content-section" id="challenges-content">
+                <div class="section-header">
+                    <div class="section-title">التحديات النشطة</div>
+                    <div class="section-actions">
+                        <button class="filter-btn active">جميع التحديات</button>
+                        <button class="filter-btn">جارية</button>
+                        <button class="filter-btn">منتهية</button>
+                    </div>
+                </div>
+                <div class="content-grid" id="challengesGrid">
+                    <!-- سيتم إضافة التحديات ديناميكياً -->
+                </div>
+            </section>
+
+            <!-- قسم التعليم -->
+            <section class="content-section" id="education-content">
+                <div class="section-header">
+                    <div class="section-title">الدروس والمواد التعليمية</div>
+                    <div class="section-actions">
+                        <button class="filter-btn active">جميع الدروس</button>
+                        <button class="filter-btn">للمبتدئين</button>
+                        <button class="filter-btn">للمتقدمين</button>
+                    </div>
+                </div>
+                <div class="content-grid" id="educationGrid">
+                    <!-- سيتم إضافة المواد التعليمية ديناميكياً -->
+                </div>
+            </section>
+
+            <!-- قسم المناقشات -->
+            <section class="content-section" id="discussions-content">
+                <div class="section-header">
+                    <div class="section-title">المناقشات النشطة</div>
+                    <div class="section-actions">
+                        <button class="filter-btn active">جميع المناقشات</button>
+                        <button class="filter-btn">شائعة</button>
+                        <button class="filter-btn">أسئلة</button>
+                    </div>
+                </div>
+                <div class="content-grid" id="discussionsGrid">
+                    <!-- سيتم إضافة المناقشات ديناميكياً -->
+                </div>
+            </section>
+
+            <!-- قسم البث المباشر -->
+            <section class="content-section" id="live-content">
+                <div class="section-header">
+                    <div class="section-title">البثوث المباشرة</div>
+                    <div class="section-actions">
+                        <button class="filter-btn active">مباشر الآن</button>
+                        <button class="filter-btn">القادمة</button>
+                        <button class="filter-btn">المسجلة</button>
+                    </div>
+                </div>
+                <div class="content-grid" id="liveGrid">
+                    <!-- سيتم إضافة البثوث المباشرة ديناميكياً -->
+                </div>
+            </section>
+
+            <!-- قسم الوسائط -->
+            <section class="content-section" id="media-content">
+                <div class="section-header">
+                    <div class="section-title">معرض الوسائط</div>
+                    <div class="section-actions">
+                        <button class="filter-btn active">جميع الوسائط</button>
+                        <button class="filter-btn">صور</button>
+                        <button class="filter-btn">فيديوهات</button>
+                    </div>
+                </div>
+                <div class="content-grid" id="mediaGrid">
+                    <!-- سيتم إضافة الوسائط ديناميكياً -->
+                </div>
+            </section>
+
+            <!-- المساحة الفاضية البسيطة في نهاية المحتوى -->
+            <div class="content-spacer">
+                <div class="spacer-content">
+                    <i class="fas fa-arrow-up"></i>
+                    <span>وصلت إلى نهاية المحتوى الحالي</span>
+                </div>
+            </div>
+        </main>
+
+        <!-- زر إنشاء محتوى جديد -->
+        <button class="create-content-btn" id="createContentBtn">
+            <i class="fas fa-plus"></i>
+        </button>
+
+        <!-- شريط التنقل السفلي -->
+        <nav class="bottom-nav-new">
+            <a href="#" class="nav-item-new">
+                <i class="fas fa-home nav-icon-new"></i>
+                <span>الرئيسية</span>
+            </a>
+            <a href="#" class="nav-item-new">
+                <i class="fas fa-compass nav-icon-new"></i>
+                <span>استكشاف</span>
+            </a>
+            <a href="#" class="nav-item-new active">
+                <i class="fas fa-globe nav-icon-new"></i>
+                <span>العوالم</span>
+            </a>
+            <a href="#" class="nav-item-new">
+                <i class="fas fa-video nav-icon-new"></i>
+                <span>مباشر</span>
+            </a>
+            <a href="#" class="nav-item-new">
+                <i class="fas fa-user nav-icon-new"></i>
+                <span>حسابي</span>
+            </a>
+        </nav>
+    </div>
+
+    
+    <script src="assets/js/world_content_edited.js"></script>
+</body>
+</html>

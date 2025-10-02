@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SocialVerse - سوق العوالم</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <link rel="stylesheet" href="assets/css/marketplace.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- شريط العنوان -->
+        <header class="marketplace-header">
+            <button class="back-btn" id="backBtn">
+                <i class="fas fa-arrow-right"></i>
+            </button>
+            <div class="marketplace-title">سوق العوالم</div>
+            <div class="wallet-info">
+                <i class="fas fa-wallet wallet-icon"></i>
+                <span class="wallet-amount" id="walletAmount">1,250</span>
+                <span>نقطة</span>
+            </div>
+            <div class="header-actions">
+                <button class="icon-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="icon-btn">
+                    <i class="fas fa-shopping-cart"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- المحتوى الرئيسي -->
+        <main class="marketplace-content">
+            <!-- البطاقة الشخصية الاقتصادية -->
+            <section class="economy-profile">
+                <div class="profile-info">
+                    <div class="profile-avatar">أ</div>
+                    <div class="profile-details">
+                        <h2>أحمد محمد</h2>
+                        <p>مستوى 5 - منشئ محتوى</p>
+                    </div>
+                </div>
+                <div class="economy-stats">
+                    <div class="stat">
+                        <span class="stat-value">12</span>
+                        <span class="stat-label">منتج</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">3.2K</span>
+                        <span class="stat-label">مبيع</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">4.8</span>
+                        <span class="stat-label">تقييم</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- تبويبات السوق -->
+            <nav class="marketplace-tabs">
+                <button class="marketplace-tab active" data-tab="worlds">
+                    <i class="fas fa-globe"></i>
+                    العوالم
+                </button>
+                <button class="marketplace-tab" data-tab="tools">
+                    <i class="fas fa-tools"></i>
+                    الأدوات
+                </button>
+                <button class="marketplace-tab" data-tab="subscriptions">
+                    <i class="fas fa-crown"></i>
+                    الاشتراكات
+                </button>
+                <button class="marketplace-tab" data-tab="economy">
+                    <i class="fas fa-coins"></i>
+                    الاقتصاد
+                </button>
+            </nav>
+
+            <!-- فلتر المنتجات -->
+            <div class="marketplace-filter">
+                <button class="filter-btn active">الكل</button>
+                <button class="filter-btn">الأكثر مبيعاً</button>
+                <button class="filter-btn">الأحدث</button>
+                <button class="filter-btn">مميز</button>
+                <button class="filter-btn">مجاني</button>
+                <button class="filter-btn">بخصم</button>
+            </div>
+
+            <!-- قسم العوالم -->
+            <section class="content-section active" id="worlds-content">
+                <div class="products-grid" id="worldsGrid">
+                    <!-- سيتم إضافة العوالم ديناميكياً -->
+                </div>
+            </section>
+
+            <!-- قسم الأدوات -->
+            <section class="content-section" id="tools-content">
+                <div class="tools-categories">
+                    <button class="tool-category active">كل الأدوات</button>
+                    <button class="tool-category">واجهات</button>
+                    <button class="tool-category">أيقونات</button>
+                    <button class="tool-category">مؤثرات</button>
+                    <button class="tool-category">قوالب</button>
+                    <button class="tool-category">إضافات</button>
+                </div>
+                <div class="products-grid" id="toolsGrid">
+                    <!-- سيتم إضافة الأدوات ديناميكياً -->
+                </div>
+            </section>
+
+            <!-- قسم الاشتراكات -->
+            <section class="content-section" id="subscriptions-content">
+                <div class="subscriptions-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-crown"></i>
+                        خطط الاشتراك
+                    </h2>
+                    <div class="plans-grid">
+                        <!-- الخطة الأساسية -->
+                        <div class="plan-card">
+                            <div class="plan-header">
+                                <div class="plan-name">أساسي</div>
+                                <div class="plan-price">0</div>
+                                <div class="plan-period">شهرياً</div>
+                            </div>
+                            <ul class="plan-features">
+                                <li class="plan-feature">
+                                    <i class="fas fa-check"></i>
+                                    <span>عالم واحد</span>
+                                </li>
+                                <li class="plan-feature">
+                                    <i class="fas fa-check"></i>
+                                    <span>100 عضو كحد أقصى</span>
+                                </li>
+                                <li class="plan-feature">
+                                    <i class="fas fa-check"></i>
+                                    <span>أدوات أساسية</span>
+                                </li>
+                                <li class="plan-feature">
+                                    <i class="fas fa-times"></i>
+                                    <span style="opacity: 0.5;">إحصائيات متقدمة</span>
+                                </li>
+                                <li class="plan-feature">
+                                    <i class="fas fa-times"></i>
+                                    <span style="opacity: 0.5;">دعم متميز</span>
+                                </li>
+                            </ul>
+                            <div class="plan-actions">
+                                <button class="subscribe-btn" data-plan="basic">الخطة الحالية</button>
+                            </div>
+                        </div>
+
+                        <!-- الخطة المميزة -->
+                        <div class="plan-card featured">
+                            <div class="plan-header">
+                                <div class="plan-name">مميز</div>
+                                <div class="plan-price">49</div>
+                                <div class="plan-period">شهرياً</div>
+                            </div>
+                            <ul class="plan-features">
+                                <li class="plan-feature">
+                                    <i class="fas fa-check"></i>
+                                    <span>5 عوالم</span>
+                                </li>
+                                <li class="plan-feature">
+                                    <i class="fas fa-check"></i>
+                                    <span>1000 عضو لكل عالم</span>
+                                </li>
+                                <li class="plan-feature">
+                                    <i class="fas fa-check"></i>
+                                    <span>جميع الأدوات</span>
+                                </li>
+                                <li class="plan-feature">
+                                    <i class="fas fa-check"></i>
+                                    <span>إحصائيات متقدمة</span>
+                                </li>
+                                <li class="plan-feature">
+                                    <i class="fas fa-check"></i>
+                                    <span>دعم متميز</span>
+                                </li>
+                            </ul>
+                            <div class="plan-actions">
+                                <button class="subscribe-btn" data-plan="premium">ترقية الآن</button>
+                            </div>
+                        </div>
+
+                        <!-- الخطة الاحترافية -->
+                        <div class="plan-card">
+                            <div class="plan-header">
+                                <div class="plan-name">احترافي</div>
+                                <div class="plan-price">99</div>
+                                <div class="plan-period">شهرياً</div>
+                            </div>
+                            <ul class="plan-features">
+                                <li class="plan-feature">
+                                    <i class="fas fa-check"></i>
+                                    <span>عوالم غير محدودة</span>
+                                </li>
+                                <li class="plan-feature">
+                                    <i class="fas fa-check"></i>
+                                    <span>أعضاء غير محدودين</span>
+                                </li>
+                                <li class="plan-feature">
+                                    <i class="fas fa-check"></i>
+                                    <span>أدوات حصرية</span>
+                                </li>
+                                <li class="plan-feature">
+                                    <i class="fas fa-check"></i>
+                                    <span>تحليلات متقدمة</span>
+                                </li>
+                                <li class="plan-feature">
+                                    <i class="fas fa-check"></i>
+                                    <span>دعم فوري 24/7</span>
+                                </li>
+                            </ul>
+                            <div class="plan-actions">
+                                <button class="subscribe-btn" data-plan="professional">ترقية الآن</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- قسم الاقتصاد -->
+            <section class="content-section" id="economy-content">
+                <div class="economy-section">
+                    <div class="economy-header">
+                        <h2 class="section-title">
+                            <i class="fas fa-coins"></i>
+                            نظام الاقتصاد
+                        </h2>
+                        <button class="icon-btn">
+                            <i class="fas fa-history"></i>
+                        </button>
+                    </div>
+
+                    <div class="balance-card">
+                        <div class="balance-label">رصيدك الحالي</div>
+                        <div class="balance-amount">1,250 نقطة</div>
+                    </div>
+
+                    <div class="economy-actions">
+                        <button class="economy-btn primary" id="addFundsBtn">
+                            <i class="fas fa-plus"></i>
+                            إضافة رصيد
+                        </button>
+                        <button class="economy-btn" id="withdrawBtn">
+                            <i class="fas fa-dollar-sign"></i>
+                            سحب الأرباح
+                        </button>
+                        <button class="economy-btn" id="transferBtn">
+                            <i class="fas fa-exchange-alt"></i>
+                            تحويل رصيد
+                        </button>
+                        <button class="economy-btn" id="giftBtn">
+                            <i class="fas fa-gift"></i>
+                            إرسال هدية
+                        </button>
+                    </div>
+
+                    <div class="transaction-history">
+                        <h3 style="margin-bottom: 15px; font-size: 16px;">سجل المعاملات</h3>
+                        <div id="transactionsList">
+                            <!-- سيتم إضافة المعاملات ديناميكياً -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- نافذة الشراء -->
+        <div class="purchase-modal" id="purchaseModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="modal-title">تأكيد الشراء</div>
+                    <button class="close-modal" id="closeModal">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="product-summary">
+                        <div class="summary-image" id="modalProductImage">🌍</div>
+                        <div class="summary-details">
+                            <div class="summary-title" id="modalProductTitle">اسم المنتج</div>
+                            <div class="summary-creator" id="modalProductCreator">بواسطة المنشئ</div>
+                            <div class="summary-price" id="modalProductPrice">0 نقطة</div>
+                        </div>
+                    </div>
+
+                    <div class="payment-methods">
+                        <div class="payment-title">طريقة الدفع</div>
+                        <div class="payment-options">
+                            <div class="payment-option active" data-method="wallet">
+                                <div class="payment-icon">
+                                    <i class="fas fa-wallet"></i>
+                                </div>
+                                <div class="payment-name">المحفظة</div>
+                            </div>
+                            <div class="payment-option" data-method="card">
+                                <div class="payment-icon">
+                                    <i class="fas fa-credit-card"></i>
+                                </div>
+                                <div class="payment-name">بطاقة ائتمان</div>
+                            </div>
+                            <div class="payment-option" data-method="paypal">
+                                <div class="payment-icon">
+                                    <i class="fab fa-paypal"></i>
+                                </div>
+                                <div class="payment-name">PayPal</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="confirm-purchase" id="confirmPurchase">
+                        <i class="fas fa-shopping-cart"></i>
+                        تأكيد الشراء
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- شريط التنقل السفلي -->
+        <nav class="bottom-nav-new">
+            <a href="الصفحة الرئيسية.html" class="nav-item-new">
+                <i class="fas fa-home nav-icon-new"></i>
+                <span>الرئيسية</span>
+            </a>
+            <a href="#" class="nav-item-new">
+                <i class="fas fa-compass nav-icon-new"></i>
+                <span>استكشاف</span>
+            </a>
+            <a href="محتويات العالم معدل.html" class="nav-item-new">
+                <i class="fas fa-globe nav-icon-new"></i>
+                <span>العوالم</span>
+            </a>
+            <a href="#" class="nav-item-new active">
+                <i class="fas fa-store nav-icon-new"></i>
+                <span>السوق</span>
+            </a>
+            <a href="صفحة حسابي.html" class="nav-item-new">
+                <i class="fas fa-user nav-icon-new"></i>
+                <span>حسابي</span>
+            </a>
+        </nav>
+    </div>
+
+    
+    <script src="assets/js/marketplace.js"></script>
+</body>
+</html>

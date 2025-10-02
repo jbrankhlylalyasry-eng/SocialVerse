@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SocialVerse - نظام العوالم التفاعلية</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="assets/css/worlds.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="main-header">
+            <div class="logo">SocialVerse</div>
+            <div class="header-actions">
+                <button class="icon-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="icon-btn">
+                    <i class="fas fa-plus"></i>
+                </button>
+                <button class="icon-btn">
+                    <i class="fas fa-bell"></i>
+                </button>
+            </div>
+        </header>
+
+        <nav class="tab-container">
+            <div class="tab active">العوالم</div>
+            <div class="tab">مباشر</div>
+            <div class="tab">متابَعين</div>
+            <div class="tab">مميز</div>
+            <div class="tab">اكتشاف</div>
+        </nav>
+
+        <main class="main-content">
+            <!-- فلتر العوالم -->
+            <div class="realms-filter">
+                <button class="filter-btn active">جميع العوالم</button>
+                <button class="filter-btn">المباشرة الآن</button>
+                <button class="filter-btn">الأكثر شعبية</button>
+                <button class="filter-btn">الجديدة</button>
+                <button class="filter-btn">التعليمية</button>
+                <button class="filter-btn">الترفيهية</button>
+                <button class="filter-btn">التقنية</button>
+                <button class="filter-btn">الرياضية</button>
+            </div>
+
+            <!-- شبكة العوالم التفاعلية -->
+            <div class="realms-grid" id="realmsContainer">
+                <!-- سيتم إضافة العوالم ديناميكياً -->
+            </div>
+
+            <!-- العوالم المباشرة -->
+            <div class="live-realms">
+                <div class="section-title">
+                    <div class="live-indicator"></div>
+                    عوالم مباشرة الآن
+                </div>
+                <div class="live-grid" id="liveRealmsContainer">
+                    <!-- سيتم إضافة العوالم المباشرة ديناميكياً -->
+                </div>
+            </div>
+
+            <!-- المساحة الفاضية البسيطة -->
+            <div class="content-spacer">
+                <div class="spacer-content">
+                    <i class="fas fa-arrow-up"></i>
+                    <span>وصلت إلى نهاية المحتوى الحالي</span>
+                </div>
+            </div>
+        </main>
+
+        <!-- واجهة العالم التفاعلي -->
+        <div class="realm-overlay" id="realmOverlay">
+            <div class="realm-interface">
+                <div class="realm-interface-header">
+                    <div class="realm-interface-title" id="realmInterfaceTitle">عالم التفاعل</div>
+                    <button class="close-realm" id="closeRealm">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="realm-interface-content">
+                    <div class="realm-main">
+                        <div class="live-stream">
+                            📹 البث المباشر - جاري التحضير...
+                        </div>
+                        <div class="realm-actions" style="display: flex; gap: 10px;">
+                            <button class="join-btn" style="flex: none;">❤️ إعجاب</button>
+                            <button class="join-btn" style="flex: none;">🔄 مشاركة</button>
+                            <button class="join-btn" style="flex: none;">💬 تفاعل</button>
+                        </div>
+                    </div>
+                    <div class="realm-chat">
+                        <div class="chat-header">محادثة مباشرة</div>
+                        <div class="chat-messages" id="chatMessages">
+                            <div class="message">مرحباً بك في العالم التفاعلي!</div>
+                            <div class="message">يمكنك البدء بالتواصل مع الآخرين...</div>
+                        </div>
+                        <div class="chat-input">
+                            <input type="text" id="chatInput" placeholder="اكتب رسالتك...">
+                            <button id="sendMessage">إرسال</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <nav class="bottom-nav-new">
+            <a href="#" class="nav-item-new">
+                <i class="fas fa-home nav-icon-new"></i>
+                <span>الرئيسية</span>
+            </a>
+            <a href="#" class="nav-item-new active">
+                <i class="fas fa-globe nav-icon-new"></i>
+                <span>العوالم</span>
+            </a>
+            <div class="nav-create-new" id="createRealmBtn">
+                <i class="fas fa-plus"></i>
+            </div>
+            <a href="#" class="nav-item-new">
+                <i class="fas fa-video nav-icon-new"></i>
+                <span>مباشر</span>
+            </a>
+            <a href="#" class="nav-item-new">
+                <i class="fas fa-user nav-icon-new"></i>
+                <span>حسابي</span>
+            </a>
+        </nav>
+    </div>
+
+    
+    <script src="assets/js/worlds.js"></script>
+</body>
+</html>
